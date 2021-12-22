@@ -2,11 +2,11 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'django-insecure-98l(e#+j+d1p916o8mx&u!qh59b4pj=em%9l9m^qz2a#m+i24!'
+SECRET_KEY = os.environ.get('KEY'),
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.environ.get('HOSTS', default='127.0.0.1')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -131,3 +131,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+EMPTY_DISPLAY = '-пусто-'
