@@ -4,9 +4,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('KEY'),
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [os.environ.get('HOSTS', default='127.0.0.1')]
+ALLOWED_HOSTS = [os.environ.get('HOST', default='*')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -61,8 +61,13 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.environ.get('DB_ENGINE',
+                                 default='django.db.backends.postgresql'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', default=5432),
     }
 }
 
