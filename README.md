@@ -57,11 +57,3 @@ sudo docker-compose exec web python manage.py loaddata ingredients.json
 sudo docker-compose exec web python manage.py createsuperuser
 ```
 ### Проект будет доступен по вашему IP
-
-## Для ревью проект будет доступен по адресу http://178.154.201.89
-
-### Вход на сайт/в админку:
-```
-admin@ya.ru
-admin
-```
